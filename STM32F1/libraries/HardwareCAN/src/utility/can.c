@@ -562,7 +562,7 @@ void can_rx_read(CAN_Port* CANx, CAN_FIFO fifo)
 	can_rx_release(CANx, fifo);
 }
 
-uint8 CAN_RX0_IRQ_Handler(void)
+uint8 __attribute__ ((interrupt)) CAN_RX0_IRQ_Handler(void)
 {
 	if (can_active)
 	{
@@ -580,7 +580,7 @@ void __irq_can_rx1(void)
 	CAN_RX0_IRQ_Handler() ;
 }
 
-void USB_HP_CAN_TX_IRQHandler (void)
+void __attribute__ ((interrupt)) USB_HP_CAN_TX_IRQHandler(void)
 {
 	if (can_active)
 	{
