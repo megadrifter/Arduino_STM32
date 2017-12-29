@@ -23,8 +23,9 @@ void CANSetup(void)
                                       // will be performed at ease in a task or in the loop. The software fifo is 16 cells long, 
                                       // allowing at least 15 ms before processing the fifo is needed at 125 kbps
   Stat = canBus.status();
-  if (Stat != CAN_OK)
+  if (Stat != CAN_OK) {
      /* Your own error processing here */ ;   // Initialization failed
+  }
 }
 
 
