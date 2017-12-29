@@ -152,6 +152,10 @@ void SendCANmessages(void)
 
 // The application program starts here
 void setup() {
+#ifdef SERIAL_USB
+  Serial.end(); // Disable USB !!!
+#endif
+  
   // put your setup code here, to run once:
   CANSetup() ;        // Initialize the CAN module and prepare the message structures.
 }

@@ -80,6 +80,10 @@ int sState = 0;         // variable for reading the switch status
 byte st = 0x31; // buttot 1 on the CD30MP3
 
 void setup() {
+#ifdef SERIAL_USB
+  Serial.end(); // Disable USB !!!
+#endif
+	
   // put your setup code here, to run once:
   CANSetup() ;        // Initialize the CAN module and prepare the message structures.
   pinMode(PC13, OUTPUT);
