@@ -46,7 +46,7 @@ public:
     CAN_STATUS begin(CAN_SPEED speed, uint32 mode);
 	void end(void);
 
-	CAN_STATUS filter(uint8 idx, uint32 id, uint32 mask);
+	CAN_STATUS filter(uint8 idx, uint32 id, uint32 mask, int ext_id = 0);
 	CAN_STATUS map(CAN_GPIO_MAP remap);
 	CAN_STATUS status(void);
 
