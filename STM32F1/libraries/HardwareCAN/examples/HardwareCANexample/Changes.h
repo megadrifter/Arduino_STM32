@@ -31,7 +31,7 @@ void __irq_usb_hp_can_tx(void)
 }
 
 uint8 __attribute__((weak)) CAN_RX0_IRQ_Handler(void)
-{ return 1 ; }      // Dummy ISR 
+{ return 0 ; }      // Dummy ISR 
 
 2.3.2) and altered function void __irq_usb_lp_can_rx0(void)
  Was

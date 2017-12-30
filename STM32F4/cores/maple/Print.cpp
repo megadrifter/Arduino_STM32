@@ -99,10 +99,6 @@ size_t Print::print(unsigned long n, int base) {
 }
 
 size_t Print::print(long long n, int base) {
-    if (base == BYTE) 
-	{
-        return write((uint8)n);
-    }
     if (n < 0) {
         print('-');
         n = -n;
@@ -111,13 +107,7 @@ size_t Print::print(long long n, int base) {
 }
 
 size_t Print::print(unsigned long long n, int base) {
-size_t c=0;
-    if (base == BYTE) {
-        c= write((uint8)n);
-    } else {
-        c= printNumber(n, base);
-    }
-	return c;
+	return printNumber(n, base);
 }
 
 size_t Print::print(double n, int digits) {
@@ -126,9 +116,7 @@ size_t Print::print(double n, int digits) {
 
 size_t Print::print(const __FlashStringHelper *ifsh)
 {
-  size_t n = print(ifsh);
-  n += println();
-  return n;
+  return print(reinterpret_cast<const char *>(ifsh));
 }
 
 size_t Print::print(const Printable& x)
