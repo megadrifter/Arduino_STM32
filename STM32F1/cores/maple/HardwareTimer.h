@@ -143,6 +143,7 @@ public:
      * @return The new overflow value.
      */
     uint16 setCycles(uint32 Cycles);
+
     /**
      * @brief Set the timer's period in microseconds.
      *

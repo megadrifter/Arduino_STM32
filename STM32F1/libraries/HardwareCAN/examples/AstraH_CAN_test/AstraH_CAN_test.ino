@@ -23,8 +23,9 @@ void CANSetup(void)
                                       // will be performed at ease in a task or in the loop. The software fifo is 16 cells long, 
                                       // allowing at least 15 ms before processing the fifo is needed at 125 kbps
   Stat = canBus.status();
-  if (Stat != CAN_OK)
+  if (Stat != CAN_OK) {
      /* Your own error processing here */ ;   // Initialization failed
+  }
 }
 
 
@@ -79,6 +80,10 @@ int sState = 0;         // variable for reading the switch status
 byte st = 0x31; // buttot 1 on the CD30MP3
 
 void setup() {
+#ifdef SERIAL_USB
+  Serial.end(); // Disable USB !!!
+#endif
+	
   // put your setup code here, to run once:
   CANSetup() ;        // Initialize the CAN module and prepare the message structures.
   pinMode(PC13, OUTPUT);

@@ -87,6 +87,10 @@ void SendCANmessage(long id=0x001, byte dlength=8, byte d0=0x00, byte d1=0x00, b
 // The application program starts here
 byte msgD0 = 0x00;
 void setup() {        // Initialize the CAN module and prepare the message structures.
+#ifdef SERIAL_USB
+  Serial.end(); // Disable USB !!!
+#endif
+  
   pinMode(PC13, OUTPUT);
   digitalWrite(PC13, HIGH);
   delay(10);

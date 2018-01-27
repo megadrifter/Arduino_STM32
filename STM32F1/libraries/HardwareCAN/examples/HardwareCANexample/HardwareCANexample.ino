@@ -1,5 +1,5 @@
 #include <HardwareCAN.h>
-#include "changes.h"
+#include "Changes.h"
 /*
  * Example of use of the HardwareCAN library
  * This application receives two frames containing various data. It also produces data that are sent periodically using another two frames.
@@ -70,8 +70,9 @@ void CANSetup(void)
                                       // will be performed at ease in a task or in the loop. The software fifo is 16 cells long, 
                                       // allowing at least 15 ms before processing the fifo is needed at 125 kbps
   Stat = canBus.status();
-  if (Stat != CAN_OK)
+  if (Stat != CAN_OK) {
      /* Your own error processing here */ ;   // Initialization failed
+  }
 }
 
 // Send one frame. Parameter is a pointer to a frame structure (above), that has previously been updated with data.
@@ -151,6 +152,10 @@ void SendCANmessages(void)
 
 // The application program starts here
 void setup() {
+#ifdef SERIAL_USB
+  Serial.end(); // Disable USB !!!
+#endif
+  
   // put your setup code here, to run once:
   CANSetup() ;        // Initialize the CAN module and prepare the message structures.
 }

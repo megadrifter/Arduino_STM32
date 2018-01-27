@@ -280,7 +280,8 @@ CAN_STATUS can_init_enter(CAN_Port* CANx);
 CAN_STATUS can_init_leave(CAN_Port* CANx);
 CAN_STATUS can_init(CAN_Port *CANx, uint32 mode, uint8 speed);
 CAN_STATUS can_deinit(CAN_Port* CANx);
-CAN_STATUS can_filter(CAN_Port* CANx, uint8 filter_idx,  CAN_FIFO fifo_number, CAN_FILTER_SCALE scale, CAN_FILTER_MODE mode, uint32 fr1, uint32 fr2);
+CAN_STATUS can_filter(CAN_Port* CANx, uint8 filter_idx,  CAN_FIFO fifo_number, CAN_FILTER_SCALE scale, CAN_FILTER_MODE mode, uint32 fr1, uint32 fr2, int extID);
+
 CAN_STATUS can_set_timing(CAN_Port* CANx, uint32 timing);
 CAN_STATUS can_set_mode(CAN_Port* CANx, uint32 mode);
 CAN_STATUS can_gpio_map(CAN_Port* CANx, CAN_GPIO_MAP map_mode);

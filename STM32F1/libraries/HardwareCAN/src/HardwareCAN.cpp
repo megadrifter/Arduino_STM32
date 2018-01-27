@@ -39,9 +39,9 @@ void HardwareCAN::set_irq_mode(void)
 	return can_set_irq_mode(Port);
 }
 
-CAN_STATUS HardwareCAN::filter(uint8 idx, uint32 id, uint32 mask)
+CAN_STATUS HardwareCAN::filter(uint8 idx, uint32 id, uint32 mask, int ext_id)
 {
-	return can_filter(Port, idx, CAN_FIFO0, CAN_FILTER_32BIT, CAN_FILTER_MASK, id, mask);
+	return can_filter(Port, idx, CAN_FIFO0, CAN_FILTER_32BIT, CAN_FILTER_MASK, id, mask, ext_id);
 }
 
 CAN_STATUS HardwareCAN::status(void)

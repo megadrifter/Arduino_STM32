@@ -277,7 +277,7 @@ CAN_STATUS can_gpio_map(CAN_Port* CANx, CAN_GPIO_MAP map_mode)
 	return status;
 }
 
-CAN_STATUS can_filter(CAN_Port* CANx, uint8 filter_idx, CAN_FIFO fifo, CAN_FILTER_SCALE scale, CAN_FILTER_MODE mode, uint32 fr1, uint32 fr2, int extID = 0)
+CAN_STATUS can_filter(CAN_Port* CANx, uint8 filter_idx, CAN_FIFO fifo, CAN_FILTER_SCALE scale, CAN_FILTER_MODE mode, uint32 fr1, uint32 fr2, int extID)
 {
 	uint32 mask = ((uint32)0x00000001) << filter_idx;
 
@@ -561,7 +561,7 @@ void can_rx_read(CAN_Port* CANx, CAN_FIFO fifo)
 	can_rx_release(CANx, fifo);
 }
 
-uint8 CAN_RX0_IRQ_Handler(void)
+uint8 __attribute__ ((interrupt)) CAN_RX0_IRQ_Handler(void)
 {
 	if (can_active)
 	{
@@ -579,7 +579,7 @@ void __irq_can_rx1(void)
 	CAN_RX0_IRQ_Handler() ;
 }
 
-void USB_HP_CAN_TX_IRQHandler (void)
+void __attribute__ ((interrupt)) USB_HP_CAN_TX_IRQHandler(void)
 {
 	if (can_active)
 	{
